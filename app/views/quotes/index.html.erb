@@ -2,6 +2,6 @@
 
 <ul>
   <% @quotes.each do |q| %>
-  <li><%= q.body %></li>
+  <li><%= link_to(q.body, "/quotes/#{q.id}") %></li>
   <% end%>
 </ul>

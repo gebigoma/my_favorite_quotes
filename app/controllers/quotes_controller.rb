@@ -8,9 +8,15 @@ class QuotesController < ApplicationController
   end
 
   def new
+    @quote = Quote.new
   end
 
   def create
+    @quote = Quote.new
+    @quote.body = params[:quote][:body]
+    @quote.author = params[:quote][:author]
+    @quote.save
+    redirect_to '/quotes'
   end
 
   def edit
