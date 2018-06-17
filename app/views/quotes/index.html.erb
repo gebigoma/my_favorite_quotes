@@ -5,3 +5,5 @@
   <li><%= link_to(q.body, "/quotes/#{q.id}") %></li>
   <% end%>
 </ul>
+
+<%= link_to 'Create', new_quote_path(@quote) %>

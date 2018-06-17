@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
   def index
-    @quotes = Quote.all
+    @quotes = Quote.first(3).reverse
   end
 
   def show
@@ -20,11 +20,22 @@ class QuotesController < ApplicationController
   end
 
   def edit
+    @quote = Quote.find(params[:id])
   end
 
   def update
+    @quote = Quote.find(params[:id])
+    @quote.body = params[:quote][:body]
+    @quote.author = params[:quote][:author]
+    @quote.save
+    # redirect_to "/quotes/" + params[:id]
+    redirect_to quote_path(@quote)
+
   end
 
   def destroy
+    @quote = Quote.find(params[:id])
+    @quote.destroy
+    redirect_to root_path
   end
 end
